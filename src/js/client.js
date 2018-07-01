@@ -1,26 +1,34 @@
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
-const reducer = function(state, action) {
-    if (action.type === "CAT") {
-        return (state + action.age * 7);
+const userReducer = function(state={}, action) {
+    switch(action.type) {
+        case "CHANGE_USERNAME": {
+            // state.username = action.payload;
+            // break;
+        }
+        case "CHANGE_NAME": {
+            // state.name = action.payload;
+            // break;
+        }
     }
+    return state
+};
 
-    else if (action.type === "DOG") {
-        return (state + action.age * 15);
-    }
-
+const tweetsReducer = (state=[], action) => {
     return state;
 }
 
-// Holds state of App
-const store = createStore(reducer, 0);
-
-store.subscribe(() => {
-    console.log("store changed", store.getState())
+const allReducers = combineReducers({
+    user: userReducer,
+    tweets: tweetsReducer,
 })
 
-store.dispatch({type: "CAT", age: 5})
-store.dispatch({type: "CAT", age: 2})
-store.dispatch({type: "DOG", age: 5})
-store.dispatch({type: "CAT", age: 7})
-store.dispatch({type: "DOG", age: 3})
+// Holds state of App
+const store = createStore(allReducers);
+
+store.subscribe(() => {
+    console.log("animal store changed", store.getState())
+})
+
+store.dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
+store.dispatch({type: "CHANGE_NAME", payload: "Alex"})
