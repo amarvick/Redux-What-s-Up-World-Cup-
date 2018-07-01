@@ -1,4 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
+// import logger from 'redux-logger';
 
 const userReducer = function(state={}, action) {
     switch(action.type) {
@@ -12,9 +14,9 @@ const userReducer = function(state={}, action) {
             state = {...state, name: action.payload};
             break;
         }
-        case "CHANGE_NERD": {
-            throw new Error("ERROR!!!!");
-        }
+        // default: {
+        //     throw new Error("ERROR!!!! Action does not exist.");
+        // }
     }
     return state
 };
@@ -41,7 +43,9 @@ const error = (store) => (next) => (action) => {
     }
 }
 
-const middleware = applyMiddleware(logger); // helps keep loggers stored, making Redux simple
+const middleware = applyMiddleware(thunk, logger);
+// helps keep loggers stored, making Redux simple
+// thunk 
 
 // Holds state of App
 const store = createStore(allReducers, '', middleware);
@@ -50,6 +54,12 @@ store.subscribe(() => {
     console.log("animal store changed", store.getState())
 })
 
-store.dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
-store.dispatch({type: "CHANGE_NAME", payload: "Alex"})
-store.dispatch({type: "CHANGE_NERD", payload: "This doesn't exist!!"})
+// store.dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
+// store.dispatch({type: "CHANGE_NAME", payload: "Alex"})
+store.dispatch((dispatch) => {
+    dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
+    dispatch({type: "CHANGE_NAME", payload: "Alex"})
+})
+
+
+// store.dispatch({type: "CHANGE_NERD", payload: "This doesn't exist!!"})
