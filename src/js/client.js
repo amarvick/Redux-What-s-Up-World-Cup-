@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import axios from 'axios'; // xhr request (XML Http Request)
 import thunk from 'redux-thunk';
+import promise from "redux-promise-middleware";
 // import logger from 'redux-logger';
 
 const initialState = {
@@ -41,7 +42,7 @@ const userReducer = function(state=initialState, action) {
             break;
         }
 
-        case "RECEIVE_USERS": {
+        case "FETCH_USERS_FULFILLED": {
             return {...state,
                 fetching: false,
                 fetched: true,
@@ -75,9 +76,8 @@ const error = (store) => (next) => (action) => {
     }
 }
 
-const middleware = applyMiddleware(thunk, logger);
+const middleware = applyMiddleware(promise(), thunk, logger); // Promise - something will happen eventually, even if not right away (posting a comment takes a while to load; you can do other things at the same time, like scroll around)
 // helps keep loggers stored, making Redux simple
-// thunk 
 
 // Holds state of App
 const store = createStore(allReducers, '', middleware);
@@ -88,19 +88,27 @@ store.subscribe(() => {
 
 // store.dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
 // store.dispatch({type: "CHANGE_NAME", payload: "Alex"})
-store.dispatch((dispatch) => {
-    dispatch({type: "FETCH_USERS_START"})
-    axios.get("http://rest.learncode.academy/api/wstern/users")
-        .then((response) => {
-            dispatch({type: "RECEIVE_USERS", payload: response.data})
-        })
-        .catch((err) => {
-            dispatch({type: "FETCH_USERS_ERROR", payload: err})
-        })
 
-    // dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
-    // dispatch({type: "CHANGE_NAME", payload: "Alex"})
+// THUNK - can only have one argument
+
+// Below is a promise. Directly below - see comments
+store.dispatch({
+    type: "FETCH_USERS",
+    payload: axios.get("http://rest.learncode.academy/api/wstern/users")
 })
+//  This is a regular request
+//     dispatch({type: "FETCH_USERS_START"})
+//     axios.get("http://rest.learncode.academy/api/wstern/users")
+//         .then((response) => {
+//             dispatch({type: "RECEIVE_USERS", payload: response.data})
+//         })
+//         .catch((err) => {
+//             dispatch({type: "FETCH_USERS_ERROR", payload: err})
+//         })
+
+//     // dispatch({type: "CHANGE_USERNAME", payload: "@amarvick"})
+//     // dispatch({type: "CHANGE_NAME", payload: "Alex"})
+// })
 
 
 // store.dispatch({type: "CHANGE_NERD", payload: "This doesn't exist!!"})
