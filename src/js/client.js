@@ -27,7 +27,7 @@ const userReducer = function(state=initialState, action) {
         //     throw new Error("ERROR!!!! Action does not exist.");
         // }
 
-        case "FETCH_USERS_START" : {
+        case "FETCH_USERS_PENDING" : {
             return {...state,
                 fetching: true
             }
@@ -90,7 +90,6 @@ store.subscribe(() => {
 // store.dispatch({type: "CHANGE_NAME", payload: "Alex"})
 
 // THUNK - can only have one argument
-
 // Below is a promise. Directly below - see comments
 store.dispatch({
     type: "FETCH_USERS",
