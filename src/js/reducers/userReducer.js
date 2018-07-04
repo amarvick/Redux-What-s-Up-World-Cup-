@@ -5,7 +5,6 @@ export default function reducer(state={
         id: null,
         username: null,
         name: null,
-        age: null,
     },
     error: null,
 }, action) {
@@ -28,7 +27,7 @@ export default function reducer(state={
             return {...state,
                 fetching: false,
                 fetched: true,
-                tweets: action.payload
+                user: action.payload
             }
         }
 

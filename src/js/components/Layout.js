@@ -13,27 +13,28 @@ connect((store) => {
     };
 })
 
-export default class Layout extends React.Component {
-    fetchUser() {
-        this.props.dispatch(fetchUser())
-    }
-
-    fetchTweets() {
-        this.props.dispatch(fetchTweets())
+class Layout extends React.Component {
+    fetchData() {
+        this.props.dispatch(fetchTweets());
+        this.props.dispatch(fetchUser());
     }
 
     render() {
-        const { user, tweets } = this.props;
+        let user = {};
+        let tweets = [];
 
-        // if (!tweets.length) {
-
+        // if (this.props) {
+        //     ({ user, tweets } = this.props);
+        // } else {
+        //     user = {};
+        //     tweets = [{id: 1, tweets: "Placeholder"}];
         // }
-
+        
         const mappedTweets = tweets.map(tweet => <li key={tweet.id}>{tweet.text}</li>)
 
         return(
             <div>
-                <button onClick={this.fetchTweets.bind(this)}>load tweets</button>
+                <button onClick={this.fetchData.bind(this)}>Load Tweets</button>
                 <h1>{user.name}</h1>
                 <ul>{mappedTweets}</ul>
             </div>
@@ -42,13 +43,13 @@ export default class Layout extends React.Component {
 }
 
 // wraps dispatch to create nicer functions to call within our component
-// const mapDispatchToProps = (dispatch) => ({
-//     dispatch: dispatch,
-//     startup: () => dispatch(StartupActions.startup())
-// })
+const mapDispatchToProps = (dispatch) => ({
+    dispatch: dispatch,
+    startup: () => dispatch(StartupActions.startup())
+})
   
-// const mapStateToProps = (state) => ({
-//     nav: state.nav
-// })
+const mapStateToProps = (state) => ({
+    nav: state.nav
+})
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)
