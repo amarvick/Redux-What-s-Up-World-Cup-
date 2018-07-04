@@ -15,7 +15,7 @@ export default function reducer(state={
         case "FETCH_TWEETS_ERROR": {
             return {...state,
                 fetching: false,
-                error: action.payload
+                error: action.payload,
             }
         }
 
@@ -23,7 +23,7 @@ export default function reducer(state={
             return {...state,
                 fetching: false,
                 fetched: true,
-                tweets: action.payload
+                tweets: action.payload,
             }
         }
 
@@ -41,14 +41,14 @@ export default function reducer(state={
 
             return {
                 ...state,
-                tweets: newTweets
+                tweets: newTweets,
             }
         }
 
         case "DELETE_TWEET": {
             return {
                 ...state,
-                tweets: state.tweets.filter(tweet => tweet.id !== action.payload)
+                tweets: state.tweets.filter(tweet => tweet.id !== action.payload),
             }
         }
     }

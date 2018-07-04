@@ -2,8 +2,8 @@ export function fetchUser() {
     return {
         type: "FETCH_USER_SUCCESS",
         payload: {
+            username: '@AlexMarvick',
             name: 'Alex',
-            age: 35,
         }
     }
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function fetchTweets() {
     return function(dispatch) {
-    axios.get("http://rest.learncode.academy/api/test123/tweets")
+    axios.get("http://rest.learncode.academy/api/amarvick/tweets")
         .then((response) => {
             dispatch({type: "FETCH_TWEETS_SUCCESS", payload: response.data})
         })
@@ -18,23 +18,23 @@ export function addTweet(id, text) {
         payload: {
             id,
             text,
-        }
+        },
     }
 }
 
-export function updateTweet() {
+export function updateTweet(id, text) {
     return {
         type: 'UPDATE_TWEET',
         payload: {
             id,
             text,
-        }
+        },
     }
 }
 
-export function deleteTweets() {
+export function deleteTweets(id) {
     return {
         type: 'DELETE_TWEET',
-        payload: ['Hello']
+        payload: id,
     }
 }
