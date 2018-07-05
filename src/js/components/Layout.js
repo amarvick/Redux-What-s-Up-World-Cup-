@@ -17,19 +17,22 @@ class Layout extends React.Component {
     fetchData() {
         this.props.dispatch(fetchTweets());
         this.props.dispatch(fetchUser());
+
+        console.log('DATA: ' + JSON.stringify(this.props));
+        console.log(this.props);
+        // console.log('TWEETS: ' + this.props.tweets);
     }
 
     render() {
         let user = {};
         let tweets = [];
 
-        // if (this.props) {
-        //     ({ user, tweets } = this.props);
-        // } else {
-        //     user = {};
-        //     tweets = [{id: 1, tweets: "Placeholder"}];
-        // }
+        if (this.props.user && this.props.tweets) {
+            user = this.props.user;
+            tweets = this.props.tweets;
+        }
         
+
         const mappedTweets = tweets.map(tweet => <li key={tweet.id}>{tweet.text}</li>)
 
         return(
@@ -43,13 +46,17 @@ class Layout extends React.Component {
 }
 
 // wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
 const mapDispatchToProps = (dispatch) => ({
     dispatch: dispatch,
     startup: () => dispatch(StartupActions.startup())
 })
   
+// Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
-    nav: state.nav
+    nav: state.nav,
+    tweets: state.tweets.tweets,
+    user: state.user.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

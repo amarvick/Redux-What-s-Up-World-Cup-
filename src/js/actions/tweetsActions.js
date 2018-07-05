@@ -12,7 +12,10 @@ export function fetchTweets() {
     // }
     return {
         type: "FETCH_TWEETS_SUCCESS",
-        payload: ['AlexTweet']
+        payload: [{
+            id: 1,
+            text: 'AlexTweet'
+        }]
     }
 }
 
