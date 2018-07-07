@@ -18,9 +18,8 @@ class Layout extends React.Component {
         this.props.dispatch(fetchTweets());
         this.props.dispatch(fetchUser());
 
-        console.log('DATA: ' + JSON.stringify(this.props));
-        console.log(this.props);
-        // console.log('TWEETS: ' + this.props.tweets);
+        // console.log('DATA: ' + JSON.stringify(this.props));
+        // console.log(this.props);
     }
 
     render() {
@@ -38,8 +37,8 @@ class Layout extends React.Component {
         return(
             <div>
                 <button onClick={this.fetchData.bind(this)}>Load Tweets</button>
-                <h1>{user.name}</h1>
-                <ul>{mappedTweets}</ul>
+                <h1>User: {user.name}</h1>
+                <ul><u>Tweets</u> {mappedTweets}</ul>
             </div>
         )
     }
