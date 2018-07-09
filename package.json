@@ -13,6 +13,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "corb": "0.0.1",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "gem": "^2.4.3",
     "http": "0.0.0",

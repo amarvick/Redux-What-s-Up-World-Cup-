@@ -1,7 +1,12 @@
 export default function reducer(state={
     fetching: false,
     fetched: false,
-    tweets: [],
+    tweets: [
+        {
+            id: null,
+            text: null,
+        }
+    ],
     error: null,
 }, action) {
 
