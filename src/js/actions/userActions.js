@@ -2,16 +2,16 @@ export function fetchUser() {
     return {
         type: "FETCH_USER_SUCCESS",
         payload: {
-            username: '@AlexMarvick',
+            default_profile_image: '',
             name: 'Alex',
         }
     }
 }
 
-export function setUserUsername(username) {
+export function setUserProfileImage(default_profile_image) {
     return {
-        type: 'SET_USER_USERNAME',
-        payload: username,
+        type: 'SET_USER_PROFILE_IMAGE',
+        payload: default_profile_image,
     }
 }
 

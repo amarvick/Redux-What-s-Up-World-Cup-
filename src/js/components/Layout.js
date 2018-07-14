@@ -18,8 +18,17 @@ class Layout extends React.Component {
         this.props.dispatch(fetchTweets());
         this.props.dispatch(fetchUser());
 
-        // console.log('DATA: ' + JSON.stringify(this.props));
-        // console.log(this.props);
+        var updatedDate = document.getElementById('updatedDate');
+        var d = new Date();
+        var h = d.getUTCHours();
+        var m = d.getUTCMinutes();
+        // var s = d.getUTCMilliseconds();
+        updatedDate.innerHTML = h + ':' + m;
+
+    }
+
+    loadTweets() {
+        {this.fetchData.bind(this)}
     }
 
     render() {
@@ -30,15 +39,23 @@ class Layout extends React.Component {
             user = this.props.user;
             tweets = this.props.tweets;
         }
-        
 
-        const mappedTweets = tweets.map(tweet => <li key={tweet.id}>{tweet.text}</li>)
+        const mappedTweets = tweets.map(tweet => 
+            
+            <li key={tweet.id}>
+                <div className="tweetBorder">
+                    {tweet.text}
+                </div>
+            </li>
+        )
 
         return(
-            <div>
+            <div className="border">
+                {/* <h1>User: {user.name}</h1> */}
+                <h1><u>View All World Cup Talk Here</u></h1>
+                <p>Last Update: <span id="updatedDate"></span></p>
+                <ul>{mappedTweets}</ul>
                 <button onClick={this.fetchData.bind(this)}>Load Tweets</button>
-                <h1>User: {user.name}</h1>
-                <ul><u>Tweets</u> {mappedTweets}</ul>
             </div>
         )
     }
@@ -57,5 +74,6 @@ const mapStateToProps = (state) => ({
     tweets: state.tweets.tweets,
     user: state.user.user
 })
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

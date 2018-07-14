@@ -3,7 +3,7 @@ export default function reducer(state={
     fetched: false,
     user: {
         id: null,
-        username: null,
+        default_profile_image: null,
         name: null,
     },
     error: null,
@@ -31,9 +31,9 @@ export default function reducer(state={
             }
         }
 
-        case "SET_USER_USERNAME": {
+        case "SET_USER_PROFILE_IMAGE": {
             return {...state,
-                user: {...state.user, username: action.payload},
+                user: {...state.user, default_profile_image: action.payload},
             }
         }
 

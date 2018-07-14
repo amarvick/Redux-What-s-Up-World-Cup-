@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import './index.css'
 
-import Layout from './components/Layout'
-// import App from '../App'
-import store from './store'
+import Layout from './js/components/Layout'
+import store from './js/store'
 
-const app = document.getElementById('app')
+const root = document.getElementById('root')
 
 ReactDOM.render(
     <Provider store = {store}>
         <Layout />
-    </Provider>, app
+    </Provider>, root
 );
