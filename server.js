@@ -8,6 +8,10 @@ const port = process.env.PORT || 8000;
 app.use(express.static(__dirname + '/dist'));
 app.use(cors());
 
+app.listen(8000, function() {
+    console.log('Express server listening on port 8000');
+})
+
 app.get('/worldCupTweets', function(req, res) {
     const tweets = [];
 
@@ -17,7 +21,6 @@ app.get('/worldCupTweets', function(req, res) {
 
             // Raw JSON that gets sent back
             tweets.push(data);
-            console.log('ALL TWEETS server.js: ' + tweets);
         });
 
         setTimeout(function() {
@@ -31,16 +34,16 @@ app.get('/worldCupTweets', function(req, res) {
 })
 
 app.get('', function(req, res) {
-    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const twitter = new twit({
-    consumer_key: 'TGtWioVJf1Nx2tbyqYoMngnwH',
-    consumer_secret: 'gq0Wg5ctkDIH9ogAEaVSAuXXZoIACBTQ5uaQQPJPMUSLexaBaM',
-    access_token_key: '2597235170-lbamWi7ZR9VkiuAKAqbqsdrXy6hX4MQ3vBxh9FQ',
-    access_token_secret: '1rEe033EXnAbDX7GWSNhqcEr1dO0spV3VCN6EQRQRSXej'
+    consumer_key: '',
+    consumer_secret: '',
+    access_token_key: '',
+    access_token_secret: ''
 });
