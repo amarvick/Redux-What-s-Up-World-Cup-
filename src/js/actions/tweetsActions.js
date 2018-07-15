@@ -5,7 +5,6 @@ export function fetchTweets() {
 //     axios.get("http://localhost:8000/worldCupTweets") // https://api.twitter.com/1.1/search/tweets.json?q=from%23WorldCup    https://stream.twitter.com/1.1/statuses/filter.json?track=World%20Cup
 //         .then((response) => {
 //             dispatch({type: "FETCH_TWEETS_SUCCESS", payload: response.data})
-//             console.log('ALL TWEETS tweetsActions.js: ' + response.data);
 //         })
 //         .catch((err) => {
 //             dispatch({type: "FETCH_TWEETS_ERROR", payload: err})
