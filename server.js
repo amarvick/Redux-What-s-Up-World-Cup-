@@ -42,8 +42,8 @@ app.get('/', function(req, res) {
 });
 
 const twitter = new twit({
-    consumer_key: 'ct2aQ6cJ0fTHmolugxcKFX2T6',
-    consumer_secret: 'yZEksS22FnQoxBir7bBsuzDCdlQDLuwFZebkhmfype8sEoxG4J',
-    access_token_key: '2597235170-lbamWi7ZR9VkiuAKAqbqsdrXy6hX4MQ3vBxh9FQ',
-    access_token_secret: '1rEe033EXnAbDX7GWSNhqcEr1dO0spV3VCN6EQRQRSXej'
+    consumer_key: '',
+    consumer_secret: '',
+    access_token_key: '',
+    access_token_secret: ''
 });
