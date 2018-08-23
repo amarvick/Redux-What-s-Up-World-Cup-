@@ -52,7 +52,7 @@ class Layout extends React.Component {
         return(
             <div className="border">
                 {/* <h1>User: {user.name}</h1> */}
-                <h1><u>View All World Cup Talk Here</u></h1>
+                <h1><u>View All NBA Talk Here</u></h1>
                 <p id="lastUpdate">Last Update: <span id="updatedDate"></span></p>
                 <ul>{mappedTweets}</ul>
                 <button onClick={this.fetchData.bind(this)}>Load Tweets</button>

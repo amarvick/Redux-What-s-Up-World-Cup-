@@ -12,20 +12,18 @@ app.listen(8000, function() {
     console.log('Express server listening on port 8000');
 })
 
-app.get('/worldCupTweets', function(req, res) {
+app.get('/nbaTweets', function(req, res) {
     const tweets = [];
 
-    // Stream through all 'World Cup' tweets
+    // Stream through all 'NBA' tweets
     twitter.stream('statuses/filter', {track: 'NBA'}, function(stream) {
         stream.on('data', function(data) {
-
             // Raw JSON that gets sent back
             tweets.push(data);
         });
 
+        // In two seconds, get as many tweets as the server can get and then send to front end
         setTimeout(function() {
-            
-            // In two seconds, get as many tweets as the server can get and then send to front end
             stream.destroy();
             res.send(tweets);
         }, 2000);
@@ -42,8 +40,8 @@ app.get('/', function(req, res) {
 });
 
 const twitter = new twit({
-    consumer_key: 'ct2aQ6cJ0fTHmolugxcKFX2T6',
-    consumer_secret: 'yZEksS22FnQoxBir7bBsuzDCdlQDLuwFZebkhmfype8sEoxG4J',
-    access_token_key: '2597235170-lbamWi7ZR9VkiuAKAqbqsdrXy6hX4MQ3vBxh9FQ',
-    access_token_secret: '1rEe033EXnAbDX7GWSNhqcEr1dO0spV3VCN6EQRQRSXej'
+    consumer_key: 'kGpbc9vWAGsomsDFYGvcr3CQR',
+    consumer_secret: 'vfy5GlE0nCyob5oWXvYN550bcWXSQ2NYqvJkv0jLcRHZpiss4u',
+    access_token_key: '2597235170-GyI52NhaASkQVcGo5QhAAW0QgKkaMFJWegEbm7R',
+    access_token_secret: 'mmVTxbaMF671wZnJvT9bHoAwaXFWiFVx4XBH29VIZvHXl'
 });

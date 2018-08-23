@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function fetchTweets() {
     return function(dispatch) {
-    axios.get("http://localhost:8000/worldCupTweets") // https://api.twitter.com/1.1/search/tweets.json?q=from%23WorldCup    https://stream.twitter.com/1.1/statuses/filter.json?track=World%20Cup
+    axios.get("http://localhost:8000/nbaTweets") // https://api.twitter.com/1.1/search/tweets.json?q=from%23WorldCup    https://stream.twitter.com/1.1/statuses/filter.json?track=World%20Cup
         .then((response) => {
             dispatch({type: "FETCH_TWEETS_SUCCESS", payload: response.data})
         })
