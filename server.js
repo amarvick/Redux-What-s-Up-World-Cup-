@@ -40,13 +40,5 @@ app.get('/', function(req, res) {
 });
 
 const twitter = new twit({
-<<<<<<< HEAD
+});
 
-});
-=======
-    consumer_key: '',
-    consumer_secret: '',
-    access_token_key: '',
-    access_token_secret: ''
-});
->>>>>>> 1664d8967549e728cd9af0c11f1f397d49df41e0
