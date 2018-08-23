@@ -16,7 +16,7 @@ app.get('/worldCupTweets', function(req, res) {
     const tweets = [];
 
     // Stream through all 'World Cup' tweets
-    twitter.stream('statuses/filter', {track: 'World Cup'}, function(stream) {
+    twitter.stream('statuses/filter', {track: 'NBA'}, function(stream) {
         stream.on('data', function(data) {
 
             // Raw JSON that gets sent back
