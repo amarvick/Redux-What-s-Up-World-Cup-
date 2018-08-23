@@ -40,8 +40,5 @@ app.get('/', function(req, res) {
 });
 
 const twitter = new twit({
-    consumer_key: 'kGpbc9vWAGsomsDFYGvcr3CQR',
-    consumer_secret: 'vfy5GlE0nCyob5oWXvYN550bcWXSQ2NYqvJkv0jLcRHZpiss4u',
-    access_token_key: '2597235170-GyI52NhaASkQVcGo5QhAAW0QgKkaMFJWegEbm7R',
-    access_token_secret: 'mmVTxbaMF671wZnJvT9bHoAwaXFWiFVx4XBH29VIZvHXl'
+
 });
